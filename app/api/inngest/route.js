@@ -3,7 +3,7 @@ import {inngest, syncUserCreation,syncUserUpdation,syncUserDeletion } from "@/co
 
 
 
-export const { GET, POST, PUT } = serve({
+export const { GET, POST} = serve({
   client: inngest,
   functions: [
     syncUserCreation,

@@ -11,13 +11,14 @@ async function connectDB() {
     return cached.conn;
   }
 
+  const opts = {
+    bufferCommands: false,
+  };
+
   if (!cached.promise) {
-    cached.promise = mongoose.connect(
-      `${process.env.MONGODB_URI}/quickcart`,
-      {
-        bufferCommands: false,
-      }
-    );
+    cached.promise = mongoose
+      .connect(`${process.env.MONGODB_URI}/quickcart`, opts)
+      .then((mongoose) => mongoose);
   }
 
   cached.conn = await cached.promise;
